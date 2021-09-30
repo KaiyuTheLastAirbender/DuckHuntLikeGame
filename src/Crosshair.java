@@ -7,24 +7,26 @@ import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 import java.net.URL;
 
-public class Ghostthing{
+public class Crosshair{
 	//add location attributes
 	private int x,y; //position of the bird
 	private Image img; 	
 	private AffineTransform tx;
 
-	public Ghostthing() {
-		img = getImage("/imgs/Witch.gif"); //load the image for Tree
+	public Crosshair(int x, int y) {
+		img = getImage("/imgs/Halloween_Cameras.png"); //load the image for Tree
+		this.x = y;
+		this.y =x;
 		
-
 		tx = AffineTransform.getTranslateInstance(x, y);
-		init(x, y); 				//initialize the location of the image
+		init(0, 0); 				//initialize the location of the image
 									//use your variables
+		tx.scale(1.6, 1.5);
 	}
 	
 	public void changePicture(String newFileName) {
 		img = getImage(newFileName);
-		init(5, 5);
+		init(0, 0);
 	}
 	
 	public void paint(Graphics g) {
@@ -32,11 +34,7 @@ public class Ghostthing{
 		Graphics2D g2 = (Graphics2D) g;
 		g2.drawImage(img, tx, null);
 		
-		x++;
 		
-		//call update to update the actual picture location
-		update();
-		g2.drawImage(img, tx, null);
 		
 		
 	}
@@ -57,7 +55,7 @@ public class Ghostthing{
 	private Image getImage(String path) {
 		Image tempImage = null;
 		try {
-			URL imageURL = Ghostthing.class.getResource(path);
+			URL imageURL = Crosshair.class.getResource(path);
 			tempImage = Toolkit.getDefaultToolkit().getImage(imageURL);
 		} catch (Exception e) {
 			e.printStackTrace();
