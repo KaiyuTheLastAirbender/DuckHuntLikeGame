@@ -16,8 +16,9 @@ import javax.swing.Timer;
 
 public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
 	Duck d = new Duck();
-	Background bg = new Background(0, 360);
+	Background bg = new Background(0, 0);
 	Ghostthing w = new Ghostthing();
+	//Crosshair CH = new Crosshair();
 	
 	
 	public void paint(Graphics g) {
@@ -25,6 +26,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		bg.paint(g);
 		w.paint(g);
 		d.paint(g);
+		//CH.paint(g);
 	}
 	
 	public static void main(String[] arg) {
@@ -46,7 +48,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		f.setVisible(true);
 	}
 	
-	
+
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
